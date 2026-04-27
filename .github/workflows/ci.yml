@@ -19,12 +19,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-     - name: Run tests
-  run: npm test
+      - name: Run tests
+        run: npm test
 
-- name: Notificar Discord
-  if: always()
-  run: |
-    curl -H "Content-Type: application/json" \
-    -d "{\"content\": \" CI executado com sucesso\"}" \
-    ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Notificar Discord
+        if: always()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d "{\"content\": \"CI executado com sucesso \"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}
