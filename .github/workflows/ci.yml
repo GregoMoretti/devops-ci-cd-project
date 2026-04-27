@@ -2,23 +2,22 @@ name: CI
 
 on:
   pull_request:
-    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Usar Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Instalar dependências
+      - name: Install dependencies
         run: npm install
 
-      - name: Rodar código
-        run: node index.js
+      - name: Run tests
+        run: npm test
