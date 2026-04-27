@@ -21,4 +21,9 @@ jobs:
 
       - name: Run tests
         run: npm test
-        
+        - name: Notificar Discord
+  if: always()
+  run: |
+    curl -H "Content-Type: application/json" \
+    -d "{\"content\": \" CI executado - status automático\"}" \
+    ${{ secrets.DISCORD_WEBHOOK }}
